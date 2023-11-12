@@ -33,6 +33,11 @@ try
 
             services.AddUtilsCoreServices(configuration);
 
+            // LRUCache:SizeLimit validation is included in the AddUtilsCoreServices extension method
+            // And in the LruCache class itself, in case calling implementation doesn't implement validation, such as in these two lines below:
+            //services.AddOptions<LruCacheConfiguration>()
+            //    .Bind(configuration.GetSection("LruCache"));
+            //services.AddSingleton(typeof(ILruCache<,>), typeof(LruCache<,>));
         })
         .Build();
 

@@ -10,7 +10,7 @@ namespace CompanyName.Sdk.Utils.Core;
 /// </summary>
 /// <typeparam name="TKey">The type of the key.</typeparam>
 /// <typeparam name="TValue">The type of the value associated with the key.</typeparam>
-public sealed class LruCache<TKey, TValue> : ILruCache<TKey, TValue>
+public class LruCache<TKey, TValue> : ILruCache<TKey, TValue>
     where TKey : notnull
 {
     private readonly int _sizeLimit;
@@ -30,11 +30,11 @@ public sealed class LruCache<TKey, TValue> : ILruCache<TKey, TValue>
     {
         ArgumentNullException.ThrowIfNull(lruCacheConfiguration);
 
-        var lruCacheConfiguration1 = lruCacheConfiguration.Value;
-        if (lruCacheConfiguration1.SizeLimit < 1)
+        var config = lruCacheConfiguration.Value;
+        if (config.SizeLimit < 1)
         {
             logger?.LogError("Cache size limit must be greater than zero.");
-            throw new ArgumentException("Cache size limit must be greater than zero.", nameof(lruCacheConfiguration1.SizeLimit));
+            throw new ArgumentException("Cache size limit must be greater than zero.", nameof(config.SizeLimit));
         }
 
         _logger = logger;

@@ -1,5 +1,4 @@
 ﻿using CompanyName.Sdk.Utils.Core.Configurations;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
